@@ -1,4 +1,4 @@
-import { router } from "express";
+import { Router } from "express";
 import { body, param } from "express-validator";
 import {
   createUser,
@@ -10,7 +10,7 @@ import {
 import { authMiddleware } from "../middlewares/auth.middleware.js";
 import { adminMiddleware } from "../middlewares/admin.middleware.js";
 
-const Router = Router();
+const router = Router();
 
 const idValidation = [
   param('id').isInt().withMessage('El id debe ser un número entero.'),
@@ -20,8 +20,7 @@ const createUserValidations = [
   body('username').isLength({ min: 3, max: 20 }).isAlphanumeric(),
   body('email').isEmail(),
   body('password')
-    .isLength({ min: 8 })
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/),
+    .isLength({ min: 8 }),
   body('role').optional().isIn(['user', 'admin']),
 ];
 

@@ -1,6 +1,6 @@
 import { verifyToken } from "../helpers/jwt.helper.js";
 // Lo necesitamos porque después vamos a buscar en la base de datos el usuario que corresponde al token.
-import user from "../models/index.js";
+import { user } from "../models/index.js";
 
 export const authMiddleware = async (req, res, next) => {
   try {
@@ -36,7 +36,7 @@ export const authMiddleware = async (req, res, next) => {
     // Todo está bien, dejá pasar la petición al siguiente paso.
     next();
   } catch (error) {
-    return res.satus(401).json({
+    return res.status(401).json({
       message: "token invalido o expirado",
     });
   }

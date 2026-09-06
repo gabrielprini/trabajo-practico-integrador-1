@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { body, param } from 'express-validator';
-import { getAllTags, getTagById, createTag, updateTag, deleteTag } from '../controllers/tags.controller.js';
+import { getAllTags, getTagById, createTag, updateTag, deleteTag } from '../controllers/tag.controller.js';
 import { authMiddleware } from '../middlewares/auth.middleware.js';
 import { adminMiddleware } from '../middlewares/admin.middleware.js';
 
